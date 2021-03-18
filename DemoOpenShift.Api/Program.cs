@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -18,14 +19,18 @@ namespace DemoOpenShift
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args)                
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                    .ConfigureKestrel((context, serverOptions) =>
-                    {
-                        serverOptions.Listen(IPAddress.Loopback, 5050);
-                    });
+                    .UseKestrel();
+                    //.ConfigureKestrel((context, serverOptions) =>
+                    //{
+                    //    serverOptions.Listen(IPAddress.Loopback, 5050, listenOptions =>
+                    //    {
+                    //        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+                    //    });
+                    //});;
                 });
     }
 }
