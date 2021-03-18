@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace DemoOpenShift
@@ -20,7 +21,11 @@ namespace DemoOpenShift
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                    .ConfigureKestrel((context, serverOptions) =>
+                    {
+                        serverOptions.Listen(IPAddress.Loopback, 5050);
+                    });
                 });
     }
 }
