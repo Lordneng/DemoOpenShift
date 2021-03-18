@@ -7,9 +7,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["DemoOpenShift.Api/DemoOpenShift.Api.csproj", "DemoOpenShift"]
-COPY ["DemoOpenShift.Services/DemoOpenShift.Services.csproj", "DemoOpenShift.Services/"]
-RUN dotnet restore "DemoOpenShift.Api/DemoOpenShift.Api.csproj"
+COPY ["DemoOpenShift.Api.csproj", "DemoOpenShift.Api/"]
+COPY ["DemoOpenShift.Services.csproj", "DemoOpenShift.Services/"]
+RUN dotnet restore "DemoOpenShift.Api.csproj"
 COPY . .
 WORKDIR "/src/DemoOpenShift.Api"
 RUN dotnet build "DemoOpenShift.Api.csproj" -c Release -o /app/build
