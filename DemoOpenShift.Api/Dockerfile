@@ -11,7 +11,7 @@ COPY ["DemoOpenShift.Api/DemoOpenShift.Api.csproj", "DemoOpenShift.Api/"]
 COPY ["DemoOpenShift.Services/DemoOpenShift.Services.csproj", "DemoOpenShift.Services/"]
 RUN dotnet restore "DemoOpenShift.Api/DemoOpenShift.Api.csproj"
 COPY . .
-WORKDIR "/src/DemoOpenShift"
+WORKDIR "/src/DemoOpenShift.Api"
 RUN dotnet build "DemoOpenShift.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
