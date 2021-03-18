@@ -8,8 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["DemoOpenShift.Api.csproj", "DemoOpenShift.Api/"]
-WORKDIR "/src/DemoOpenShift.Services"
-COPY ["DemoOpenShift.Services.csproj", "DemoOpenShift.Services/"]
 RUN dotnet restore "DemoOpenShift.Api.csproj"
 COPY . .
 WORKDIR "/src/DemoOpenShift.Api"
