@@ -22,15 +22,7 @@ namespace DemoOpenShift
             Host.CreateDefaultBuilder(args)                
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                    .UseKestrel()
-                    .ConfigureKestrel((context, serverOptions) =>
-                    {
-                        serverOptions.Listen(IPAddress.Loopback, 8080, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                        });
-                    });
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
