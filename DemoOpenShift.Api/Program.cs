@@ -26,7 +26,7 @@ namespace DemoOpenShift
                     .UseKestrel()
                     .ConfigureKestrel((context, serverOptions) =>
                     {
-                        serverOptions.Listen(IPAddress.Loopback, 5050, listenOptions =>
+                        serverOptions.Listen(IPAddress.Loopback, 8080, listenOptions =>
                         {
                             listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
                         });
