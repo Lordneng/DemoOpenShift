@@ -19,8 +19,8 @@ namespace DemoOpenShift.Controllers
             _calculatorService = calculatorService;
         }
 
-        [HttpGet]
-        public int Plus(int A, int B)
+        [HttpPost("Plus")]
+        public int Plus([FromForm]int A, [FromForm]int B)
         {
             return _calculatorService.Plus(A, B);
         }
